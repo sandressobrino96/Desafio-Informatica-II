@@ -1,0 +1,40 @@
+anlisis del Desafio
+
+analisis previo 
+
+Dado el desafio , la forma en que abordare la practica es primero familializarme con los conceptos nuevos tales como Bitmap , Desplazamientos
+rotaciones , Operaciones XOR 
+ya que sin la comprension total de estas definiciones la practica no puede ser llevada acabo una vez ya analizado el concepto de tripleta RGB
+y analizando la profundidad del color y la distrubucion de los bits se procede entonces a leer el planteamiento del problema 
+
+Analisis del desafio 
+
+partimos de la premisa de que una imagen fue distorsionada mediante una serie de pasos conocidos ( rotaciones , desplazamientos , operanciones XOR )
+sin embargo lo que no sabemos es el orden de estas o si realmente se aplicaron los metodos anteriormente mencionados en su totalidad por lo cual 
+por el momento ignoramos esa parte para partir con lo que sabemos 
+tambien sabemos que se aplico una mascara  en la cual ya partiendo de la imagen transformada se sumo un patron de colores a la imagen por lo 
+cual para retornar a la imagen previa se debe desenmascarar cada imagen para llegar asi al resultado previo esto lo podriamos hacer restando 
+los pixeles , sin embargo es menester determinar que cantidad de colores se sumo a la imagen , este problema lo podriamos abordar desde el algebra
+lineal como suma resta y multiplicaciones escalares de matrices , pero antes de llegar a esa parte debemos tambien validar unos datos los cuales 
+fueron  brindados para la realizacion del ejercicio 
+
+aqui enseño un ejemplo de lo que puede ser una mascara de forma mas clara 
+Imagen original:    (100, 150, 200)   // (Rojo, Verde, Azul)
+Máscara aplicada:   (10, 5, 20)
+Resultado final:    (110, 155, 220)   // Suma componente a componente
+por lo que esta igualdad nos facilita mucho las cosas podriamos desarrollarla  mediante la siguiente ecuacion la cual seria 
+IM + Masc = Rf , con el resultado final y la mascara podriamos hallar la imagen inicial o mediante la imagen inicial y el resultado final podri-
+mos hallar la mascara 
+mi planteamiento por el momento  seria desarrollar un programa el cual haga un mapa de cada pixel de la imagen y lo almacene en forma de array 
+luego utilizar el mismo programa para asi escanear la segunda imagen con la mascara de red ya aplicada y asi determinar el factor aplicado 
+para hallar la imagen original 
+despues de esto ya con las imagenes sin mascara de Red intentar hallar el patron en el cual las modificaciones fueron procesadas 
+pero antes de hablar del procesamiento de las imagenes volviendo al punto de la mascara se habla de una semilla , no la menciono al ser aleatoria 
+y mas bien creo que mi metodo de fuerza bruta podria aunque arcaico y sin aplicar conceptos de complejidad computacional es posible llegar a la solucion
+por esta via 
+
+retomando la idea de ya haber deducido los valores originales y de tener las constantes de enmascaramiento podria crear un orden comparando los
+archivos y asi hallando el punto , final , original y final y  mediante operaciones matematicas determinar cuales fueron esas transformaciones 
+anteriormente mencionadas , creo que el reto seria ya entre la imagen original y la imagen subsequente a menos de encontrar un patron en
+la forma en la que estas han sido decodificadas 
+
