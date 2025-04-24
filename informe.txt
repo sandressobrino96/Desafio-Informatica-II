@@ -1,0 +1,51 @@
+1. [15%] Análisis del problema y consideraciones para la alternativa de solución propuesta:
+
+El objetivo de este proyecto es aplicar operaciones a nivel de bit para realizar la ingeniería inversa de una imagen encriptada. Considerando que el máximo número de bits a rotar o desplazar es de 8, se ha optado por una solución que utiliza las operaciones básicas de XOR,
+desplazamiento y rotación de bits para manipular y desencriptar la imagen original. El principal reto fue implementar un sistema que, sin estructuras ni STL, pudiera realizar estas operaciones de manera eficiente en un entorno C++ sin utilizar memoria estática. Esto se resolvió mediante punteros, arreglos dinámicos y el uso de memoria dinámica para almacenar y modificar los valores de los píxeles de las imágenes de manera flexible.
+
+2. [10%] Esquema de las tareas definidas en el desarrollo de los algoritmos:
+
+Las tareas del desarrollo fueron las siguientes:
+
+XOR entre la imagen original (IM) y la máscara (M1 y M2): El primer paso es aplicar un XOR entre la imagen (IM) y la primera máscara (M1).
+
+Rotación de bits: Una vez realizada la operación XOR, se aplica un desplazamiento de 3 bits a la izquierda.
+
+Reversión de las máscaras: Luego se reponen las máscaras en orden invertido utilizando la información contenida en los archivos M1.txt y M2.txt.
+
+Finalización del proceso: Se vuelve a aplicar el XOR para obtener la imagen original (IO).
+
+El algoritmo fue implementado de la siguiente manera: XOR(IM, M1) -> IR3 -> Revertir M2 -> IR3_original -> Rotar 3 bits -> P1 -> Revertir M1 -> P1_original -> XOR(IM).
+
+3. [10%] Algoritmos implementados:
+
+Los algoritmos utilizados para este proyecto son los siguientes:
+
+Operación XOR: XOR entre dos valores de bits a nivel de imagen para aplicar una máscara y obtener un resultado alterado.
+
+Rotación de bits a la izquierda: Desplazamiento de 3 bits a la izquierda sobre el resultado de la operación XOR, de acuerdo con las necesidades del algoritmo.
+
+Reversión de la máscara: Recuperación de la imagen original mediante el uso de las máscaras M1 y M2 para revertir las alteraciones aplicadas a la imagen.
+
+El flujo de operaciones es el siguiente:
+
+
+XOR entre A y B -> Resultado C
+Desplazamiento de 3 bits a la izquierda sobre C -> Resultado D
+Reversión de la máscara M2 -> Resultado E
+Reversión de la máscara M1 -> Resultado F
+XOR entre IM y F -> Resultado final IO
+
+4. [65%] Problemas de desarrollo que afrontó y evolución de la solución:
+
+Uno de los principales problemas fue el manejo adecuado de memoria dinámica. 
+Debido a que no se permitían estructuras ni el uso de STL, fue necesario implementar manualmente todos los mecanismos de almacenamiento y acceso a los datos en memoria, utilizando punteros y arreglos dinámicos. Otro reto importante fue realizar las operaciones de desplazamiento y rotación de bits sin afectar la integridad de la imagen. La manipulación directa de los bits requería precisión, 
+ya que un pequeño error podría alterar gravemente los datos y hacer que el proceso de ingeniería inversa fallara.
+
+La solución fue evolucionando a medida que se iba ajustando la manipulación de los bits. Inicialmente, la operación de XOR fue implementada de manera sencilla, pero al ir agregando las operaciones de desplazamiento y reversión de máscaras, se hizo necesario implementar un control más robusto sobre los punteros y el acceso a la memoria. La clave del éxito fue asegurar que las operaciones se hicieran de manera precisa y sin utilizar estructuras avanzadas que pudieran complicar la gestión de la memoria.
+
+Durante la implementación, fue crucial probar las operaciones en un entorno controlado para asegurarse de que los resultados fueran los esperados en cada paso. La revisión constante del código y la implementación gradual de las operaciones permitió asegurar que las transformaciones a nivel de bits se realizaran correctamente.
+
+Conclusión:
+
+La implementación de este algoritmo ha demostrado ser eficaz en la reconstrucción de una imagen original a partir de su versión encriptada mediante operaciones a nivel de bits. Las operaciones de XOR, desplazamiento y rotación, junto con la manipulación de las máscaras, fueron clave en este proceso. El uso de punteros y memoria dinámica permitió desarrollar una solución eficiente que cumplió con los requisitos establecidos. Sin embargo, el proyecto también subraya la importancia de un manejo adecuado de la memoria y la precisión en las operaciones de manipulación de bits para garantizar la integridad de los datos.
